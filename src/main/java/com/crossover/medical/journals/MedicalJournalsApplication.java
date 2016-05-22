@@ -9,10 +9,13 @@ import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.crossover.medical.journals.core.User;
 import com.crossover.medical.journals.exception.WebExceptionMapper;
 import com.crossover.medical.journals.resource.ApplicationResource;
 
 import io.dropwizard.Application;
+import io.dropwizard.db.DataSourceFactory;
+import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -20,9 +23,17 @@ public class MedicalJournalsApplication extends Application<MedicalJournalsConfi
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MedicalJournalsApplication.class);
 
+    private final HibernateBundle<MedicalJournalsConfiguration> hibernateBundle = new HibernateBundle<MedicalJournalsConfiguration>(
+            User.class) {
+        @Override
+        public DataSourceFactory getDataSourceFactory(MedicalJournalsConfiguration configuration) {
+            return configuration.getDataSourceFactory();
+        }
+    };
+
     @Override
     public void initialize(final Bootstrap<MedicalJournalsConfiguration> bootstrap) {
-
+        bootstrap.addBundle(hibernateBundle);
     }
 
     @Override
