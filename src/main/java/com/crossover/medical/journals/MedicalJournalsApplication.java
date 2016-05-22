@@ -13,21 +13,20 @@ import com.crossover.medical.journals.exception.WebExceptionMapper;
 import com.crossover.medical.journals.resource.ApplicationResource;
 
 import io.dropwizard.Application;
-import io.dropwizard.Configuration;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-public class MedicalJournalsApplication extends Application<Configuration> {
+public class MedicalJournalsApplication extends Application<MedicalJournalsConfiguration> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MedicalJournalsApplication.class);
 
     @Override
-    public void initialize(final Bootstrap<Configuration> bootstrap) {
+    public void initialize(final Bootstrap<MedicalJournalsConfiguration> bootstrap) {
 
     }
 
     @Override
-    public void run(Configuration configuration, Environment environment) throws Exception {
+    public void run(MedicalJournalsConfiguration configuration, Environment environment) throws Exception {
         LOGGER.info("MedicalJournalsApplication - Method run() called");
 
         // Exception Mapper
@@ -37,7 +36,7 @@ public class MedicalJournalsApplication extends Application<Configuration> {
         environment.jersey().register(new ApplicationResource());
 
         // HealthCheck
-        environment.healthChecks().register("MedicalJournalsApplication", new MedicalJournalsHealthCheck());
+        environment.healthChecks().register(configuration.getApplicationName(), new MedicalJournalsHealthCheck());
 
         // CORS Filter
         configureCors(environment);
