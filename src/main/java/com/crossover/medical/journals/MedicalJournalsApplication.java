@@ -13,6 +13,7 @@ import com.crossover.medical.journals.core.User;
 import com.crossover.medical.journals.dao.UserDAO;
 import com.crossover.medical.journals.exception.WebExceptionMapper;
 import com.crossover.medical.journals.resource.ApplicationResource;
+import com.crossover.medical.journals.resource.UserResource;
 
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
@@ -58,6 +59,7 @@ public class MedicalJournalsApplication extends Application<MedicalJournalsConfi
 
         // Resources
         environment.jersey().register(new ApplicationResource());
+        environment.jersey().register(new UserResource(userDAO));
 
         // HealthCheck
         environment.healthChecks().register(configuration.getApplicationName(), new MedicalJournalsHealthCheck());
