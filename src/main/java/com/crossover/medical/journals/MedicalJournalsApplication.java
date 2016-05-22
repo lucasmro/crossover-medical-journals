@@ -9,6 +9,7 @@ import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.crossover.medical.journals.exception.WebExceptionMapper;
 import com.crossover.medical.journals.resource.ApplicationResource;
 
 import io.dropwizard.Application;
@@ -29,10 +30,16 @@ public class MedicalJournalsApplication extends Application<Configuration> {
     public void run(Configuration configuration, Environment environment) throws Exception {
         LOGGER.info("MedicalJournalsApplication - Method run() called");
 
+        // Exception Mapper
+        environment.jersey().register(new WebExceptionMapper());
+
+        // Resources
         environment.jersey().register(new ApplicationResource());
 
+        // HealthCheck
         environment.healthChecks().register("MedicalJournalsApplication", new MedicalJournalsHealthCheck());
 
+        // CORS Filter
         configureCors(environment);
     }
 
