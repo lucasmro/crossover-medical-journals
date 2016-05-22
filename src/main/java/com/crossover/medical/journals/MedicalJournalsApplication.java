@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.crossover.medical.journals.auth.AuthenticationManager;
+import com.crossover.medical.journals.auth.TokenAuthenticator;
+import com.crossover.medical.journals.auth.TokenAuthenticatorProvider;
 import com.crossover.medical.journals.core.User;
 import com.crossover.medical.journals.dao.UserDAO;
 import com.crossover.medical.journals.exception.WebExceptionMapper;
@@ -60,6 +62,10 @@ public class MedicalJournalsApplication extends Application<MedicalJournalsConfi
 
         // Manager
         final AuthenticationManager authenticatorManager = new AuthenticationManager(userDAO);
+
+        // Authentication
+        environment.jersey()
+                .register(new TokenAuthenticatorProvider<User>(new TokenAuthenticator(authenticatorManager)));
 
         // Resources
         environment.jersey().register(new ApplicationResource());
