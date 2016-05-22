@@ -1,1 +1,7 @@
 applicationName: MedicalJournalsApplication
+
+database:
+  driverClass: org.postgresql.Driver
+  user: medicaljournals
+  password: 123456
+  url: jdbc:postgresql://localhost:5432/medicaljournals
