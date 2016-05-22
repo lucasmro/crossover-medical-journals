@@ -24,6 +24,8 @@ public class MedicalJournalsApplication extends Application<Configuration> {
         LOGGER.info("MedicalJournalsApplication - Method run() called");
 
         environment.jersey().register(new ApplicationResource());
+
+        environment.healthChecks().register("MedicalJournalsApplication", new MedicalJournalsHealthCheck());
     }
 
     public static void main(final String[] args) throws Exception {
