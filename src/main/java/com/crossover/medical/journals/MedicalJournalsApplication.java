@@ -9,6 +9,7 @@ import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.crossover.medical.journals.auth.AuthenticationManager;
 import com.crossover.medical.journals.core.User;
 import com.crossover.medical.journals.dao.UserDAO;
 import com.crossover.medical.journals.exception.WebExceptionMapper;
@@ -57,9 +58,12 @@ public class MedicalJournalsApplication extends Application<MedicalJournalsConfi
         // DAO
         final UserDAO userDAO = new UserDAO(hibernateBundle.getSessionFactory());
 
+        // Manager
+        final AuthenticationManager authenticatorManager = new AuthenticationManager(userDAO);
+
         // Resources
         environment.jersey().register(new ApplicationResource());
-        environment.jersey().register(new UserResource(userDAO));
+        environment.jersey().register(new UserResource(userDAO, authenticatorManager));
 
         // HealthCheck
         environment.healthChecks().register(configuration.getApplicationName(), new MedicalJournalsHealthCheck());

@@ -16,10 +16,12 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
+import com.crossover.medical.journals.auth.AuthenticationManager;
 import com.crossover.medical.journals.core.User;
 import com.crossover.medical.journals.dao.UserDAO;
 import com.google.common.base.Optional;
 
+import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.hibernate.UnitOfWork;
 
 @Path("/users")
@@ -28,9 +30,21 @@ import io.dropwizard.hibernate.UnitOfWork;
 public class UserResource {
 
     private final UserDAO userDAO;
+    private final AuthenticationManager authenticatorManager;
 
-    public UserResource(UserDAO userDAO) {
+    public UserResource(UserDAO userDAO, AuthenticationManager authenticatorManager) {
         this.userDAO = userDAO;
+        this.authenticatorManager = authenticatorManager;
+    }
+
+    @POST
+    @Path("/authenticate")
+    @UnitOfWork
+    public Response authenticate(final User userCredential) throws AuthenticationException {
+        final User user = authenticatorManager.findOneByCredentials(userCredential.getEmail(),
+                userCredential.getPassword());
+
+        return Response.ok(user).build();
     }
 
     @GET
@@ -59,7 +73,7 @@ public class UserResource {
     @Path("/")
     @UnitOfWork
     public Response create(@Valid final User user) {
-        userDAO.save(user);
+        authenticatorManager.createUserAndGenerateToken(user);
 
         return Response.created(UriBuilder.fromResource(UserResource.class).path("{id}").build(user.getId()))
                 .entity(user).build();
@@ -79,12 +93,9 @@ public class UserResource {
 
         user.setName(newUser.getName());
         user.setRole(newUser.getRole());
-        // TODO: Encode password
         user.setPassword(newUser.getPassword());
-        // TODO: Generate token
-        // user.setToken();
 
-        userDAO.save(user);
+        authenticatorManager.updateUserAndEncodePasswordAndGenerateNewToken(user);
 
         return Response.ok(user).build();
     }
