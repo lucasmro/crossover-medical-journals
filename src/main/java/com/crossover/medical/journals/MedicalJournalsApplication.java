@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.crossover.medical.journals.core.User;
+import com.crossover.medical.journals.dao.UserDAO;
 import com.crossover.medical.journals.exception.WebExceptionMapper;
 import com.crossover.medical.journals.resource.ApplicationResource;
 
@@ -51,6 +52,9 @@ public class MedicalJournalsApplication extends Application<MedicalJournalsConfi
 
         // Exception Mapper
         environment.jersey().register(new WebExceptionMapper());
+
+        // DAO
+        final UserDAO userDAO = new UserDAO(hibernateBundle.getSessionFactory());
 
         // Resources
         environment.jersey().register(new ApplicationResource());
