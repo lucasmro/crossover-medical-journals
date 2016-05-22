@@ -36,6 +36,12 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.3-1102-jdbc41</version>
 		</dependency>
+
+		<dependency>
+			<groupId>de.svenkubiak</groupId>
+			<artifactId>jBCrypt</artifactId>
+			<version>0.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>
