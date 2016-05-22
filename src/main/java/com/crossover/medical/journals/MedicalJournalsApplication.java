@@ -16,6 +16,7 @@ import com.crossover.medical.journals.resource.ApplicationResource;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
+import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -31,9 +32,17 @@ public class MedicalJournalsApplication extends Application<MedicalJournalsConfi
         }
     };
 
+    private final MigrationsBundle<MedicalJournalsConfiguration> migrationBundle = new MigrationsBundle<MedicalJournalsConfiguration>() {
+        @Override
+        public DataSourceFactory getDataSourceFactory(MedicalJournalsConfiguration configuration) {
+            return configuration.getDataSourceFactory();
+        }
+    };
+
     @Override
     public void initialize(final Bootstrap<MedicalJournalsConfiguration> bootstrap) {
         bootstrap.addBundle(hibernateBundle);
+        bootstrap.addBundle(migrationBundle);
     }
 
     @Override
