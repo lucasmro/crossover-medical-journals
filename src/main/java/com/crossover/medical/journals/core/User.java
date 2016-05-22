@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "users")
-@NamedQueries({ @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u ORDER u.id DESC"),
+@NamedQueries({ @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u ORDER BY u.id DESC"),
         @NamedQuery(name = "User.findOneByEmail", query = "FROM User u WHERE u.email = :email"),
         @NamedQuery(name = "User.findOneByToken", query = "FROM User u WHERE u.token = :token") })
 public class User {
