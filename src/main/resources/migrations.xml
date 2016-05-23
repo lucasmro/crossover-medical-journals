@@ -33,4 +33,27 @@
 			constraintName="uk_users_email" tableName="users" />
 	</changeSet>
 
+	<changeSet author="lucasmro" id="3">
+		<createTable tableName="journals">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="topic" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="subject" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="author" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="year" type="integer">
+				<constraints nullable="false" />
+			</column>
+			<column name="filename" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
 </databaseChangeLog>
