@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -17,7 +16,9 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
 import com.crossover.medical.journals.auth.AuthenticationManager;
+import com.crossover.medical.journals.auth.RestrictedTo;
 import com.crossover.medical.journals.core.User;
+import com.crossover.medical.journals.core.UserRole;
 import com.crossover.medical.journals.dao.UserDAO;
 import com.google.common.base.Optional;
 
@@ -50,7 +51,9 @@ public class UserResource {
     @GET
     @Path("/{id}")
     @UnitOfWork
-    public Response show(@PathParam("id") final Long id) {
+    public Response show(@RestrictedTo({ UserRole.PUBLISHER, UserRole.SUBSCRIBER }) User authenticatedUser,
+            @PathParam("id") final Long id) {
+
         final Optional<User> user = userDAO.findOneById(id);
 
         if (!user.isPresent()) {
@@ -63,7 +66,7 @@ public class UserResource {
     @GET
     @Path("/")
     @UnitOfWork
-    public Response index() {
+    public Response index(@RestrictedTo({ UserRole.PUBLISHER }) User authenticatedUser) {
         final List<User> users = userDAO.findAll();
 
         return Response.ok(users).build();
@@ -82,7 +85,9 @@ public class UserResource {
     @PUT
     @Path("/{id}")
     @UnitOfWork
-    public Response update(@PathParam("id") final Long id, @Valid final User newUser) {
+    public Response update(@RestrictedTo({ UserRole.PUBLISHER, UserRole.SUBSCRIBER }) User authenticatedUser,
+            @PathParam("id") final Long id, @Valid final User newUser) {
+
         final Optional<User> optionalUser = userDAO.findOneById(id);
 
         if (!optionalUser.isPresent()) {
@@ -100,18 +105,18 @@ public class UserResource {
         return Response.ok(user).build();
     }
 
-    @DELETE
-    @Path("/{id}")
-    @UnitOfWork
-    public Response delete(@PathParam("id") final Long id) {
-        final Optional<User> user = userDAO.findOneById(id);
-
-        if (!user.isPresent()) {
-            return Response.status(Status.NOT_FOUND).build();
-        }
-
-        userDAO.delete(user.get());
-
-        return Response.noContent().build();
-    }
+    // @DELETE
+    // @Path("/{id}")
+    // @UnitOfWork
+    // public Response delete(@PathParam("id") final Long id) {
+    // final Optional<User> user = userDAO.findOneById(id);
+    //
+    // if (!user.isPresent()) {
+    // return Response.status(Status.NOT_FOUND).build();
+    // }
+    //
+    // userDAO.delete(user.get());
+    //
+    // return Response.noContent().build();
+    // }
 }
