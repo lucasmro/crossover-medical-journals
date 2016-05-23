@@ -38,6 +38,13 @@
 		</dependency>
 
 		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-forms</artifactId>
+			<version>${dropwizard.version}</version>
+			<type>pom</type>
+		</dependency>
+
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.3-1102-jdbc41</version>
