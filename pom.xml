@@ -8,6 +8,7 @@
 
 	<properties>
 		<dropwizard.version>0.7.0-rc2</dropwizard.version>
+		<junit.version>4.12</junit.version>
 		<jvm.version>1.8</jvm.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -54,6 +55,12 @@
 			<groupId>de.svenkubiak</groupId>
 			<artifactId>jBCrypt</artifactId>
 			<version>0.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
 		</dependency>
 	</dependencies>
 
