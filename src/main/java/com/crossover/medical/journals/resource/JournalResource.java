@@ -31,9 +31,11 @@ import io.dropwizard.hibernate.UnitOfWork;
 public class JournalResource {
 
     private final JournalDAO journalDAO;
+    private final String uploadDirectory;
 
-    public JournalResource(JournalDAO journalDAO) {
+    public JournalResource(JournalDAO journalDAO, String uploadDirectory) {
         this.journalDAO = journalDAO;
+        this.uploadDirectory = uploadDirectory;
     }
 
     @GET

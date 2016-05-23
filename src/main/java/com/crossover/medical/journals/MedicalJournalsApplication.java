@@ -74,7 +74,7 @@ public class MedicalJournalsApplication extends Application<MedicalJournalsConfi
         // Resources
         environment.jersey().register(new ApplicationResource());
         environment.jersey().register(new UserResource(userDAO, authenticatorManager));
-        environment.jersey().register(new JournalResource(journalDAO));
+        environment.jersey().register(new JournalResource(journalDAO, configuration.getUploadDirectory()));
 
         // HealthCheck
         environment.healthChecks().register(configuration.getApplicationName(), new MedicalJournalsHealthCheck());
