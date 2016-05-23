@@ -12,7 +12,9 @@ import org.slf4j.LoggerFactory;
 import com.crossover.medical.journals.auth.AuthenticationManager;
 import com.crossover.medical.journals.auth.TokenAuthenticator;
 import com.crossover.medical.journals.auth.TokenAuthenticatorProvider;
+import com.crossover.medical.journals.core.Journal;
 import com.crossover.medical.journals.core.User;
+import com.crossover.medical.journals.dao.JournalDAO;
 import com.crossover.medical.journals.dao.UserDAO;
 import com.crossover.medical.journals.exception.WebExceptionMapper;
 import com.crossover.medical.journals.resource.ApplicationResource;
@@ -30,7 +32,7 @@ public class MedicalJournalsApplication extends Application<MedicalJournalsConfi
     private static final Logger LOGGER = LoggerFactory.getLogger(MedicalJournalsApplication.class);
 
     private final HibernateBundle<MedicalJournalsConfiguration> hibernateBundle = new HibernateBundle<MedicalJournalsConfiguration>(
-            User.class) {
+            User.class, Journal.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(MedicalJournalsConfiguration configuration) {
             return configuration.getDataSourceFactory();
@@ -59,6 +61,7 @@ public class MedicalJournalsApplication extends Application<MedicalJournalsConfi
 
         // DAO
         final UserDAO userDAO = new UserDAO(hibernateBundle.getSessionFactory());
+        final JournalDAO journalDAO = new JournalDAO(hibernateBundle.getSessionFactory());
 
         // Manager
         final AuthenticationManager authenticatorManager = new AuthenticationManager(userDAO);
