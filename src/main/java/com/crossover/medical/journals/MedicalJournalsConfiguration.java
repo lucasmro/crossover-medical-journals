@@ -12,12 +12,18 @@ public class MedicalJournalsConfiguration extends Configuration {
 
     private String applicationName;
 
+    private String uploadDirectory;
+
     @Valid
     @NotNull
     private DataSourceFactory database = new DataSourceFactory();
 
     public String getApplicationName() {
         return applicationName;
+    }
+
+    public String getUploadDirectory() {
+        return uploadDirectory;
     }
 
     @JsonProperty("database")

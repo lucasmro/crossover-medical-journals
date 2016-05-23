@@ -1,5 +1,7 @@
 applicationName: MedicalJournalsApplication
 
+uploadDirectory: /tmp/medicaljournals-bucket/
+
 database:
   driverClass: org.postgresql.Driver
   user: medicaljournals
