@@ -73,3 +73,24 @@ Start the server:
 To see the application, go to your web browser and access:
 
     http://localhost:8080
+
+
+## Missing Requirements
+
+Some features were not completely implemented.
+
+- Sign In
+	Backend: 100%
+	Frontend: 0%
+
+- Sign Up
+	Backend: 100%
+	Frontend: 0%
+
+- Upload
+	Backend: 90%
+	Frontend: 50%
+
+- Subscription
+	Backend: 0%
+	Frontend: 50%
