@@ -24,7 +24,7 @@ import com.google.common.base.Optional;
 
 import io.dropwizard.hibernate.UnitOfWork;
 
-@Path("/users")
+@Path("/api/users")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserResource {

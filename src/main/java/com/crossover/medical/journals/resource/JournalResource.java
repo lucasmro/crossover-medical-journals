@@ -35,7 +35,7 @@ import com.sun.jersey.multipart.FormDataParam;
 
 import io.dropwizard.hibernate.UnitOfWork;
 
-@Path("/journals")
+@Path("/api/journals")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class JournalResource {
