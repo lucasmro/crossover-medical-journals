@@ -56,4 +56,39 @@
 		</createTable>
 	</changeSet>
 
+	<changeSet author="lucasmro" id="4">
+		<loadData tableName="journals" encoding="UTF-8" file="journals.csv"
+			quotchar="'" separator=";">
+			<column header="topic" name="topic" type="STRING" />
+			<column header="subject" name="subject" type="STRING" />
+			<column header="author" name="author" type="STRING" />
+			<column header="year" name="year" type="NUMERIC" />
+			<column header="filename" name="filename" type="STRING" />
+		</loadData>
+	</changeSet>
+
+	<changeSet author="lucasmro" id="5">
+		<insert tableName="users">
+			<column name="name" type="varchar(255)" value="Publisher" />
+			<column name="email" type="varchar(255)" value="publisher@crossover.com" />
+			<column name="password" type="varchar(255)"
+				value="$2a$10$iwO9vH6m4h6I.9pnuaUo4u19mUKXuG6mm3oKE9iT525fQ/Vf5jA7K" />
+			<column name="role" type="varchar(255)" value="PUBLISHER" />
+			<column name="token" type="varchar(255)"
+				value="94ad34b1de8bd56172a7bde237bf4470db305cdd" />
+		</insert>
+	</changeSet>
+
+	<changeSet author="lucasmro" id="6">
+		<insert tableName="users">
+			<column name="name" type="varchar(255)" value="Subscriber" />
+			<column name="email" type="varchar(255)" value="subscriber@crossover.com" />
+			<column name="password" type="varchar(255)"
+				value="$2a$10$fVwdoMyHsXqIQT7OYeXzKuc4b7JONpfnAJBstV/pIRQ08eP.J1d8i" />
+			<column name="role" type="varchar(255)" value="SUBSCRIBER" />
+			<column name="token" type="varchar(255)"
+				value="689251e80cdd91301b069923a314631bef431063" />
+		</insert>
+	</changeSet>
+
 </databaseChangeLog>
