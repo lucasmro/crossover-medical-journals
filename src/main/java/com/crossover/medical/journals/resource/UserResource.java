@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -104,18 +105,20 @@ public class UserResource {
         return Response.ok(user).build();
     }
 
-    // @DELETE
-    // @Path("/{id}")
-    // @UnitOfWork
-    // public Response delete(@PathParam("id") final Long id) {
-    // final Optional<User> user = userDAO.findOneById(id);
-    //
-    // if (!user.isPresent()) {
-    // return Response.status(Status.NOT_FOUND).build();
-    // }
-    //
-    // userDAO.delete(user.get());
-    //
-    // return Response.noContent().build();
-    // }
+    @DELETE
+    @Path("/{id}")
+    @UnitOfWork
+    public Response delete(@RestrictedTo({ UserRole.PUBLISHER }) User authenticatedUser,
+            @PathParam("id") final Long id) {
+
+        final Optional<User> user = userDAO.findOneById(id);
+
+        if (!user.isPresent()) {
+            return Response.status(Status.NOT_FOUND).build();
+        }
+
+        userDAO.delete(user.get());
+
+        return Response.noContent().build();
+    }
 }
