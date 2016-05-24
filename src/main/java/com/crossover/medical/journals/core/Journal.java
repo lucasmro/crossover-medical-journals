@@ -18,7 +18,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "journals")
-@NamedQueries({ @NamedQuery(name = "Journal.findAll", query = "SELECT j FROM Journal j ORDER BY j.id DESC") })
+@NamedQueries({ @NamedQuery(name = "Journal.findAll", query = "SELECT j FROM Journal j ORDER BY j.id DESC"),
+        @NamedQuery(name = "Journal.findAllByTopic", query = "SELECT j FROM Journal j WHERE j.topic = :topic ORDER BY j.id DESC") })
 public class Journal {
 
     @Id

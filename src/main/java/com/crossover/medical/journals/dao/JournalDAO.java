@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 
 import com.crossover.medical.journals.core.Journal;
+import com.crossover.medical.journals.core.Topic;
 import com.google.common.base.Optional;
 
 import io.dropwizard.hibernate.AbstractDAO;
@@ -25,6 +26,10 @@ public class JournalDAO extends AbstractDAO<Journal> {
 
     public List<Journal> findAll() {
         return list(namedQuery("Journal.findAll"));
+    }
+
+    public List<Journal> findAllByTopic(Topic topic) {
+        return list(namedQuery("Journal.findAllByTopic").setString("topic", topic.toString()));
     }
 
     public void delete(Journal journal) {

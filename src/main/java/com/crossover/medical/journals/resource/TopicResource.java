@@ -12,12 +12,22 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.crossover.medical.journals.TopicDTO;
+import com.crossover.medical.journals.core.Journal;
 import com.crossover.medical.journals.core.Topic;
+import com.crossover.medical.journals.dao.JournalDAO;
+
+import io.dropwizard.hibernate.UnitOfWork;
 
 @Path("/api/topics")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class TopicResource {
+
+    private final JournalDAO journalDAO;
+
+    public TopicResource(JournalDAO journalDAO) {
+        this.journalDAO = journalDAO;
+    }
 
     @GET
     @Path("/")
@@ -38,5 +48,14 @@ public class TopicResource {
         final TopicDTO topicDTO = new TopicDTO(topic.toString(), topic.getValue());
 
         return Response.ok(topicDTO).build();
+    }
+
+    @GET
+    @Path("/{id}/journals")
+    @UnitOfWork
+    public Response showJournalsByTopic(@PathParam("id") final Topic topic) {
+        final List<Journal> journals = journalDAO.findAllByTopic(topic);
+
+        return Response.ok(journals).build();
     }
 }

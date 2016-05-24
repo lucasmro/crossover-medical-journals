@@ -69,9 +69,9 @@ public class JournalResource {
     @Path("/")
     @UnitOfWork
     public Response index() {
-        final List<Journal> customers = journalDAO.findAll();
+        final List<Journal> journals = journalDAO.findAll();
 
-        return Response.ok(customers).build();
+        return Response.ok(journals).build();
     }
 
     @POST
