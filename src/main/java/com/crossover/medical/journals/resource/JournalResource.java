@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -141,6 +143,10 @@ public class JournalResource {
             throw new WebApplicationException(e, Response.Status.INTERNAL_SERVER_ERROR);
         }
 
-        return Response.status(201).entity(outputPath).build();
+        final Map<String, String> result = new HashMap<>();
+        result.put("code", "201");
+        result.put("message", "Created");
+
+        return Response.status(201).entity(result).build();
     }
 }
