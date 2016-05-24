@@ -1,5 +1,133 @@
-<html>
-	<body>
-		<h1>Hello World</h1>
-	</body>
+<!doctype html>
+<html lang="en" ng-app="crossoverApp">
+<head>
+	<meta charset="utf-8">
+    <base href="/">
+	<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Medical Journals</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="libs-bower/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Google Web Fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700" rel="stylesheet" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+	<!-- CSS Files -->
+	<link href="libs-bower/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="libs-bower/owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/responsive.css" rel="stylesheet">
+
+	<!--[if lt IE 9]>
+		<script src="js/ie8-responsive-file-warning.js"></script>
+	<![endif]-->
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<!-- Fav and touch icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/fav-144.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/fav-114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/fav-72.png">
+	<link rel="apple-touch-icon-precomposed" href="images/fav-57.png">
+	<link rel="shortcut icon" href="images/fav.png">
+</head>
+<body>
+<!-- Wrapper Starts -->
+	<div id="wrapper" class="container">
+	<!-- Header Section Starts -->
+		<header id="header-area">
+		<!-- Nested Row Starts -->
+			<div class="row">
+			<!-- Logo Starts -->
+				<div class="col-md-3 col-sm-offset-4">
+					<div id="logo">
+						<a href="/"><img src="images/logo.png" title="Grocery Shoppe" alt="Grocery Shoppe" class="img-responsive" /></a>
+					</div>
+				</div>
+			<!-- Logo Ends -->
+			</div>
+		<!-- Nested Row Ends -->
+		</header>
+	<!-- Header Section Ends -->
+	<!-- Main Menu Starts -->
+		<nav id="main-menu" class="mynavbar" role="navigation">
+		<!-- Nav Header Starts -->
+			<div class="navbar-header">
+				<button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-cat-collapse">
+					<span class="sr-only">Toggle Navigation</span>
+					<i class="fa fa-bars"></i>
+				</button>
+			</div>
+		<!-- Nav Header Ends -->
+		<!-- Navbar Cat collapse Starts -->
+			<div class="collapse navbar-collapse navbar-cat-collapse">
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a href="category-list.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
+							Topics
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a tabindex="-1" href="/topic/BIOLOGY">Biology</a></li>
+							<li><a tabindex="-1" href="/topic/CARDIOLOGY">Cardiology</a></li>
+							<li><a tabindex="-1" href="/topic/ENDOCRINOLOGY">Endocrinology</a></li>
+							<li><a tabindex="-1" href="/topic/GENETICS">Genetics</a></li>
+							<li><a tabindex="-1" href="/topic/INFECTIOUS_DISEASES">Infectious Diseases</a></li>
+							<li><a tabindex="-1" href="/topic/MEDICAL">Medical</a></li>
+							<li><a tabindex="-1" href="/topic/NEUROLOGY">Neurology</a></li>
+							<li><a tabindex="-1" href="/topic/ONCOLOGY">Oncology</a></li>
+							<li><a tabindex="-1" href="/topic/PEDIATRICS">Pediatrics</a></li>
+							<li><a tabindex="-1" href="/topic/PHYSIOLOGY">Physiology</a></li>
+						</ul>
+					</li>
+					<!-- TODO: Publisher Only -->
+					<li><a href="#">Manage Journals</a></li>
+					<!-- TODO: Subscriber Only -->
+					<li><a href="#">My Subscriptions</a></li>
+					<li><a href="#">About</a></li>
+				</ul>
+			</div>
+		<!-- Navbar Cat collapse Ends -->
+		</nav>
+	<!-- Main Menu Ends -->
+	
+		<div ng-view></div>
+
+	</div>
+<!-- Wrapper Ends -->
+<!-- Copyright Area Starts -->
+	<div class="copyright container">
+		<div class="clearfix">
+			<p class="pull-left">
+				2016 - Crossover - Medical Journals
+			</p>
+		</div>
+	</div>
+<!-- Copyright Area Ends -->
+
+<!-- JavaScript Files -->
+	<script src="libs-bower/jquery/dist/jquery.min.js"></script>
+	<script src="libs-bower/jquery-migrate/jquery-migrate.min.js"></script>
+	<script src="libs-bower/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="libs-js/bootstrap-hover-dropdown.min.js"></script>
+	<script src="libs-bower/angular/angular.min.js"></script>
+	<script src="libs-bower/angular-route/angular-route.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/services.js"></script>
+	<script src="js/directives.js"></script>
+	<script src="js/filters.js"></script>
+
+</body>
 </html>

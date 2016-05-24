@@ -1,0 +1,53 @@
+	<!-- Main Container Starts -->
+		<div id="main-container">
+			<div class="row">
+			<!-- Primary Content Starts -->
+				<div class="col-md-9">
+
+				<!-- Main Heading Starts -->
+					<h2 class="main-heading2">
+						{{category.title}}
+					</h2>
+				<!-- Main Heading Ends -->
+				<!-- Product Filter Starts -->
+					<div class="product-filter">
+						<div class="row">
+							<div class="col-md-7">
+								<div class="display">
+									<a href="/categoria/{{category.slug}}" class="active">
+										<i class="fa fa-th" title="Grid View"></i>
+									</a>
+								</div>
+							 </div>
+							<div class="col-md-2 text-right">
+								<label class="control-label">Sort</label>
+							</div>
+							<div class="col-md-3 text-right">
+								<select class="form-control">
+									<option value="LATEST" selected="selected">Latest</option>
+									<option value="AZ">Journals (A - Z)</option>
+									<option value="ZA">Journals (Z - A)</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				<!-- Product Filter Ends -->
+				<!-- Product Grid Display Starts -->
+					<div class="row">
+					<!-- Product #1 Starts -->
+						<div class="col-md-4 col-sm-6" ng-repeat="journal in journals">
+							<box-journal></box-journal>
+						</div>
+					<!-- Product #1 Ends -->
+					</div>
+				<!-- Product Grid Display Ends -->
+				</div>
+			<!-- Primary Content Ends -->
+			<!-- Sidebar Starts -->
+				<div class="col-md-3">
+					<sidebar-categories></sidebar-categories>
+				</div>
+			<!-- Sidebar Ends -->
+			</div>
+		</div>
+	<!-- Main Container Ends -->

@@ -1,0 +1,42 @@
+[
+    {
+        "id": "BIOLOGY",
+        "title": "Biology"
+    },
+    {
+        "id": "CARDIOLOGY",
+        "title": "Cardiology"
+    },
+    {
+        "id": "ENDOCRINOLOGY",
+        "title": "Endocrinology"
+    },
+    {
+        "id": "GENETICS",
+        "title": "Genetics"
+    },
+    {
+        "id": "INFECTIOUS_DISEASES",
+        "title": "Infectious Diseases"
+    },
+    {
+        "id": "MEDICAL",
+        "title": "Medical"
+    },
+    {
+        "id": "NEUROLOGY",
+        "title": "Neurology"
+    },
+    {
+        "id": "ONCOLOGY",
+        "title": "Oncology"
+    },
+    {
+        "id": "PEDIATRICS",
+        "title": "Pediatrics"
+    },
+    {
+        "id": "PHYSIOLOGY",
+        "title": "Physiology"
+    }
+]

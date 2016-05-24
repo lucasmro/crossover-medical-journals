@@ -1,0 +1,26 @@
+[
+    {
+        "id": 2,
+        "topic": "CARDIOLOGY",
+        "subject": "Rate versus Rhythm Control for Atrial Fibrillation",
+        "author": "A.M. Gillinov",
+        "year": 2016,
+        "filename": "/tmp/heart.pdf"
+    },
+    {
+        "id": 9,
+        "topic": "CARDIOLOGY",
+        "subject": "Coronary-Artery Bypass Grafting",
+        "author": "J.H. Alexander",
+        "year": 2016,
+        "filename": "/tmp/medical.pdf"
+    },
+    {
+        "id": 11,
+        "topic": "CARDIOLOGY",
+        "subject": "Surgical Treatment of Ischemic Mitral Regurgitation",
+        "author": "R.E. Michler",
+        "year": 2016,
+        "filename": "/tmp/genetics.pdf"
+    }
+]

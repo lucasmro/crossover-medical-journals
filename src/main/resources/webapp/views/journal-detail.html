@@ -1,0 +1,64 @@
+	<!-- Main Container Starts -->
+		<div id="main-container">
+			<div class="row">
+			<!-- Primary Content Starts -->
+				<div class="col-md-9">
+				<!-- Breadcrumb Starts -->
+					<ol class="breadcrumb">
+						<li><a href="/">Home</a></li>
+						<li><a href="/categoria/{{journal.topic}}">{{journal.topic}}</a></li>
+						<li class="active">{{journal.subject}}</li>
+					</ol>
+				<!-- Breadcrumb Ends -->
+				<!-- Product Info Starts -->
+					<div class="row product-info">
+					
+					<!-- Right Starts -->
+						<div class="col-sm-12 product-details">
+						<!-- Product Name Starts -->
+							<h2>{{journal.subject}}</h2>
+						<!-- Product Name Ends -->
+							<hr />
+						<!-- Manufacturer Starts -->
+							<ul class="list-unstyled info">
+								<li>
+									<span>Topic:</span> {{journal.topic | enumConditionType}}
+								</li>
+								<li>
+									<span>Author:</span> {{journal.author}}
+								</li>
+								<li>
+									<span>Year:</span> {{journal.year}}
+								</li>
+							</ul>
+						<!-- Manufacturer Ends -->
+							<hr />
+						<!-- Available Options Starts -->
+							<div class="options">
+								<div class="cart-button button-group">
+									<button type="button" class="btn btn-wishlist">
+										<i class="fa fa-plus"></i>
+										SUBSCRIBE
+									</button>
+									<button type="button" class="btn btn-cart">
+										<i class="fa fa-download"></i>
+										DOWNLOAD
+									</button>
+								</div>
+							</div>
+						<!-- Available Options Ends -->
+							<hr />
+						</div>
+					<!-- Right Ends -->
+					</div>
+				<!-- product Info Ends -->
+				</div>
+			<!-- Primary Content Ends -->
+			<!-- Sidebar Starts -->
+				<div class="col-md-3">
+					<sidebar-categories></sidebar-categories>
+				</div>
+			<!-- Sidebar Ends -->
+			</div>
+		</div>
+	<!-- Main Container Ends -->

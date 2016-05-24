@@ -1,0 +1,72 @@
+<html>
+<body>
+	<link href="libs-bower/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
+
+	<style>
+		.dropzone {
+			height: 200px;
+			width: 200px;
+		}
+	</style>
+
+	<script src="libs-bower/dropzone/dist/min/dropzone.min.js"></script>
+	<script src="libs-bower/jquery/dist/jquery.min.js"></script>
+
+	<script>
+		Dropzone.options.myDropzone = {
+			autoProcessQueue : false,
+			uploadMultiple : false,
+			maxFiles : 1,
+			parallelUploads : 1,
+			maxFilesize : 5,
+			addRemoveLinks : true,
+			dictDefaultMessage: "Click here or drop the file here to upload",
+
+			init : function() {
+				var myDropzone = this;
+
+				$("button[type=submit]").click(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+
+					$("#topic").val($("#topicTmp").val());
+					$("#subject").val($("#subjectTmp").val());
+					$("#author").val($("#authorTmp").val());
+					$("#year").val($("#yearTmp").val());
+
+					myDropzone.processQueue();
+				});
+
+				// You might want to show the submit button only when files are dropped here:
+				this.on("addedfile", function() {
+					// Show submit button here and/or inform user to click it.
+				});
+
+				this.on("maxfilesexceeded", function(file) {
+					this.removeFile(file);
+				});
+			}
+		};
+	</script>
+
+	<h1>Upload</h1>
+
+	<form id="my-dropzone" class="dropzone" action="/api/journals/1/upload">
+		<input type="hidden" name="topic" id="topic" />
+		<input type="hidden" name="subject" id="subject" />
+		<input type="hidden" name="author" id="author" />
+		<input type="hidden" name="year" id="year" />
+	</form>
+
+	<!-- Now setup your input fields -->
+	Topic: <input type="text" id="topicTmp" /> <br /><br />
+	Subject: <input type="text" id="subjectTmp" /> <br /><br />
+	Author: <input type="text" id="authorTmp" /> <br /><br />
+	Year: <input type="text" id="yearTmp" /> <br /><br />
+
+	<button type="submit">Save</button>
+
+	<span id="max-files-reached"></span>
+
+</body>
+</html>

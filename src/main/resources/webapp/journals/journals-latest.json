@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "topic": "PEDIATRICS",
+        "subject": "Randomized Trial of Allergenic Foods in Infants",
+        "author": "M.R. Perkin",
+        "year": 2016,
+        "filename": "/tmp/medical.pdf"
+    },
+    {
+        "id": 2,
+        "topic": "CARDIOLOGY",
+        "subject": "Rate versus Rhythm Control for Atrial Fibrillation",
+        "author": "A.M. Gillinov",
+        "year": 2016,
+        "filename": "/tmp/heart.pdf"
+    },
+    {
+        "id": 3,
+        "topic": "GENETICS",
+        "subject": "Gene Therapy for Choroideremia",
+        "author": "T.L. Edwards",
+        "year": 2016,
+        "filename": "/tmp/genetics.pdf"
+    },
+    {
+        "id": 4,
+        "topic": "INFECTIOUS_DISEASES",
+        "subject": "HIV-1 Infection in Adults in Africa and Thailand",
+        "author": "M.L. Robb",
+        "year": 2016,
+        "filename": "/tmp/genetics.pdf"
+    },
+    {
+        "id": 5,
+        "topic": "ENDOCRINOLOGY",
+        "subject": "Loose Teeth and Thirst",
+        "author": "R.H. Khonsari ",
+        "year": 2016,
+        "filename": "/tmp/heart.pdf"
+    },
+    {
+        "id": 6,
+        "topic": "BIOLOGY",
+        "subject": "Biology Theory",
+        "author": "Michelini, Lucas",
+        "year": 2016,
+        "filename": "/tmp/medical.pdf"
+    },
+    {
+        "id": 7,
+        "topic": "ONCOLOGY",
+        "subject": "Genomics of Lung Cancer",
+        "author": "Genomics of Lung Cancer",
+        "year": 2016,
+        "filename": "/tmp/medical.pdf"
+    },
+    {
+        "id": 8,
+        "topic": "PHYSIOLOGY",
+        "subject": "Physiology Theory",
+        "author": "Michelini, Lucas",
+        "year": 2015,
+        "filename": "/tmp/heart.pdf"
+    },
+    {
+        "id": 9,
+        "topic": "CARDIOLOGY",
+        "subject": "Coronary-Artery Bypass Grafting",
+        "author": "J.H. Alexander",
+        "year": 2016,
+        "filename": "/tmp/medical.pdf"
+    },
+    {
+        "id": 10,
+        "topic": "INFECTIOUS_DISEASES",
+        "subject": "Zika Virus and Birth Defects — Evidence of Causality",
+        "author": "S.A. Rasmussen",
+        "year": 2016,
+        "filename": "/tmp/heart.pdf"
+    },
+    {
+        "id": 11,
+        "topic": "CARDIOLOGY",
+        "subject": "Surgical Treatment of Ischemic Mitral Regurgitation",
+        "author": "R.E. Michler",
+        "year": 2016,
+        "filename": "/tmp/genetics.pdf"
+    },
+    {
+        "id": 12,
+        "topic": "ENDOCRINOLOGY",
+        "subject": "Lifestyle Program in Obese Infertile Women",
+        "author": "M.A.Q. Mutsaerts",
+        "year": 2016,
+        "filename": "/tmp/genetics.pdf"
+    }
+]
