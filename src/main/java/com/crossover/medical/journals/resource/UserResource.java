@@ -22,7 +22,6 @@ import com.crossover.medical.journals.core.UserRole;
 import com.crossover.medical.journals.dao.UserDAO;
 import com.google.common.base.Optional;
 
-import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.hibernate.UnitOfWork;
 
 @Path("/users")
@@ -41,7 +40,7 @@ public class UserResource {
     @POST
     @Path("/authenticate")
     @UnitOfWork
-    public Response authenticate(final User userCredential) throws AuthenticationException {
+    public Response authenticate(final User userCredential) {
         final User user = authenticatorManager.findOneByCredentials(userCredential.getEmail(),
                 userCredential.getPassword());
 
