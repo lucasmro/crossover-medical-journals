@@ -17,12 +17,12 @@ import com.crossover.medical.journals.core.User;
 import com.crossover.medical.journals.dao.JournalDAO;
 import com.crossover.medical.journals.dao.UserDAO;
 import com.crossover.medical.journals.exception.WebExceptionMapper;
-import com.crossover.medical.journals.resource.ApplicationResource;
 import com.crossover.medical.journals.resource.JournalResource;
 import com.crossover.medical.journals.resource.TopicResource;
 import com.crossover.medical.journals.resource.UserResource;
 
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
@@ -52,11 +52,15 @@ public class MedicalJournalsApplication extends Application<MedicalJournalsConfi
     public void initialize(final Bootstrap<MedicalJournalsConfiguration> bootstrap) {
         bootstrap.addBundle(hibernateBundle);
         bootstrap.addBundle(migrationBundle);
+        bootstrap.addBundle(new AssetsBundle("/webapp", "/", "index.html"));
     }
 
     @Override
     public void run(MedicalJournalsConfiguration configuration, Environment environment) throws Exception {
         LOGGER.info("MedicalJournalsApplication - Method run() called");
+
+        // Serve Resources at /api.
+        environment.jersey().setUrlPattern("/api/*");
 
         // Exception Mapper
         environment.jersey().register(new WebExceptionMapper());
@@ -73,7 +77,6 @@ public class MedicalJournalsApplication extends Application<MedicalJournalsConfi
                 .register(new TokenAuthenticatorProvider<User>(new TokenAuthenticator(authenticatorManager)));
 
         // Resources
-        environment.jersey().register(new ApplicationResource());
         environment.jersey().register(new UserResource(userDAO, authenticatorManager));
         environment.jersey().register(new JournalResource(journalDAO, configuration.getUploadDirectory()));
         environment.jersey().register(new TopicResource(journalDAO));

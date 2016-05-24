@@ -18,7 +18,7 @@ import com.crossover.medical.journals.dao.JournalDAO;
 
 import io.dropwizard.hibernate.UnitOfWork;
 
-@Path("/api/topics")
+@Path("/topics")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class TopicResource {
