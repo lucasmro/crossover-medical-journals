@@ -1,13 +1,15 @@
 package com.crossover.medical.journals.core;
 
 public enum Topic {
-    MEDICAL("Medical"), //
     BIOLOGY("Biology"), //
     CARDIOLOGY("Cardiology"), //
     ENDOCRINOLOGY("Endocrinology"), //
     GENETICS("Genetics"), //
+    INFECTIOUS_DISEASES("Infectious Diseases"), //
+    MEDICAL("Medical"), //
     NEUROLOGY("Neurology"), //
     ONCOLOGY("Oncology"), //
+    PEDIATRICS("Pediatrics"), //
     PHYSIOLOGY("Physiology");
 
     final String value;
