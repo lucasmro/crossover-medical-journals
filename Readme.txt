@@ -94,3 +94,105 @@ Some features were not completely implemented.
 - Subscription
 	Backend: 0%
 	Frontend: 50%
+
+
+## API
+
+### Authenticate (PUBLISHER)
+
+POST	http://localhost:8080/api/users/authenticate
+
+Headers:
+	Content-Type: application/json
+
+{
+	"email": "publisher@crossover.com",
+	"password": "123"
+}
+
+Response:
+{
+    "id": 1,
+    "name": "Publisher",
+    "email": "publisher@crossover.com",
+    "password": "$2a$10$iwO9vH6m4h6I.9pnuaUo4u19mUKXuG6mm3oKE9iT525fQ/Vf5jA7K",
+    "role": "PUBLISHER",
+    "token": "94ad34b1de8bd56172a7bde237bf4470db305cdd"
+}
+
+### Authenticate (SUBSCRIBER)
+
+POST	http://localhost:8080/api/users/authenticate
+
+Headers:
+	Content-Type: application/json
+
+{
+	"email": "subscriber@crossover.com",
+	"password": "123"
+}
+
+Response:
+{
+    "id": 2,
+    "name": "Subscriber",
+    "email": "subscriber@crossover.com",
+    "password": "$2a$10$fVwdoMyHsXqIQT7OYeXzKuc4b7JONpfnAJBstV/pIRQ08eP.J1d8i",
+    "role": "PUBLISHER",
+    "token": "689251e80cdd91301b069923a314631bef431063"
+}
+
+### List all users (Empty Token)
+
+GET		http://localhost:8080/api/users
+
+Headers:
+	Content-Type: application/json
+
+Response:
+{
+    "code": "401",
+    "message": "Unauthorized"
+}
+
+### List all users (SUBSCRIBER Token)
+
+GET		http://localhost:8080/api/users
+
+Headers:
+	Content-Type: application/json
+	Authorization	689251e80cdd91301b069923a314631bef431063
+
+Response:
+{
+    "code": "403",
+    "message": "Forbidden"
+}
+
+### List all users (PUBLISHER Token)
+
+GET		http://localhost:8080/api/users
+
+Headers:
+	Content-Type: application/json
+	Authorization	94ad34b1de8bd56172a7bde237bf4470db305cdd
+
+Response:
+[
+    {
+        "id": 2,
+        "name": "Subscriber",
+        "email": "subscriber@crossover.com",
+        "password": "$2a$10$fVwdoMyHsXqIQT7OYeXzKuc4b7JONpfnAJBstV/pIRQ08eP.J1d8i",
+        "role": "SUBSCRIBER",
+        "token": "689251e80cdd91301b069923a314631bef431063"
+    },
+    {
+        "id": 1,
+        "name": "Publisher",
+        "email": "publisher@crossover.com",
+        "password": "$2a$10$iwO9vH6m4h6I.9pnuaUo4u19mUKXuG6mm3oKE9iT525fQ/Vf5jA7K",
+        "role": "PUBLISHER",
+        "token": "94ad34b1de8bd56172a7bde237bf4470db305cdd"
+    }
+]
