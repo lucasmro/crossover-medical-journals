@@ -1,4 +1,4 @@
-package com.crossover.medical.journals;
+package com.crossover.medical.journals.core.dto;
 
 public class TopicDTO {
 

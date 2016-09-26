@@ -11,9 +11,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.crossover.medical.journals.TopicDTO;
 import com.crossover.medical.journals.core.Journal;
 import com.crossover.medical.journals.core.Topic;
+import com.crossover.medical.journals.core.dto.TopicDTO;
 import com.crossover.medical.journals.dao.JournalDAO;
 
 import io.dropwizard.hibernate.UnitOfWork;
